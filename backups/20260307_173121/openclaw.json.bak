@@ -1,0 +1,145 @@
+{
+  "meta": {
+    "lastTouchedVersion": "2026.3.3",
+    "lastTouchedAt": "2026-03-07T03:14:44.702Z"
+  },
+  "wizard": {
+    "lastRunAt": "2026-02-16T06:21:27.876Z",
+    "lastRunVersion": "2026.2.13",
+    "lastRunCommand": "doctor",
+    "lastRunMode": "local"
+  },
+  "logging": {
+    "file": "/tmp/claw_logs/openclaw-2026-03-06.log"
+  },
+  "auth": {
+    "profiles": {
+      "minimax:default": {
+        "provider": "minimax",
+        "mode": "api_key"
+      }
+    }
+  },
+  "models": {
+    "mode": "merge",
+    "providers": {
+      "minimax": {
+        "baseUrl": "http://127.0.0.1:8766",
+        "apiKey": "sk-bot-LznlAg-L4-_sbe93vVbzoRtsNhLa0pFku4cdpeshpcli9eOXJ6tdXJ3UrXXJNXBWje_oI_r3ha29_wwTE1-NCBzfLyaDAeWhSanIyPGc113y",
+        "api": "anthropic-messages",
+        "models": [
+          {
+            "id": "auto",
+            "name": "Auto Model"
+          }
+        ]
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "minimax/auto"
+      },
+      "models": {},
+      "workspace": "/workspace",
+      "compaction": {
+        "mode": "safeguard"
+      },
+      "maxConcurrent": 4,
+      "subagents": {
+        "maxConcurrent": 8
+      }
+    },
+    "list": [
+      {
+        "id": "main",
+        "default": true,
+        "subagents": {
+          "allowAgents": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "tools": {
+    "deny": [
+      "image",
+      "web_search",
+      "web_fetch"
+    ],
+    "web": {
+      "search": {
+        "enabled": false
+      },
+      "fetch": {
+        "enabled": false
+      }
+    },
+    "media": {
+      "image": {
+        "enabled": false
+      }
+    }
+  },
+  "messages": {
+    "ackReactionScope": "group-mentions"
+  },
+  "commands": {
+    "native": "auto",
+    "nativeSkills": "auto",
+    "restart": true,
+    "ownerDisplay": "raw"
+  },
+  "channels": {
+    "feishu": {
+      "appId": "cli_a9204bf38f78dbb6",
+      "appSecret": "L9g4qjW9lu6XjQ1u8MjVAhZarBpB8Rht"
+    }
+  },
+  "gateway": {
+    "port": 18789,
+    "mode": "local",
+    "bind": "loopback",
+    "auth": {
+      "mode": "token",
+      "token": "minimax-agent"
+    },
+    "tailscale": {
+      "mode": "off",
+      "resetOnExit": false
+    },
+    "reload": {
+      "mode": "hot",
+      "debounceMs": 300
+    },
+    "nodes": {
+      "denyCommands": [
+        "camera.snap",
+        "camera.clip",
+        "screen.record",
+        "calendar.add",
+        "contacts.add",
+        "reminders.add"
+      ]
+    }
+  },
+  "plugins": {
+    "load": {
+      "paths": [
+        "/app/openclaw/extensions/claw-bridge",
+        "/app/openclaw/extensions/feishu",
+        "/app/openclaw/extensions/dingtalk",
+        "/app/openclaw/extensions/matrix-mcp"
+      ]
+    },
+    "entries": {
+      "claw-bridge": {
+        "config": {
+          "verbose": false
+        }
+      }
+    }
+  }
+}
