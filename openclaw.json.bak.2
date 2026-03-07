@@ -1,0 +1,199 @@
+{
+  "meta": {
+    "lastTouchedVersion": "2026.3.3",
+    "lastTouchedAt": "2026-03-06T16:30:41.566Z"
+  },
+  "wizard": {
+    "lastRunAt": "2026-03-06T15:58:21.340Z",
+    "lastRunVersion": "2026.3.3",
+    "lastRunCommand": "doctor",
+    "lastRunMode": "local"
+  },
+  "logging": {
+    "file": "/tmp/claw_logs/openclaw-2026-03-06.log"
+  },
+  "auth": {
+    "profiles": {
+      "minimax:default": {
+        "provider": "minimax",
+        "mode": "api_key"
+      }
+    }
+  },
+  "models": {
+    "mode": "merge",
+    "providers": {
+      "minimax": {
+        "baseUrl": "http://127.0.0.1:8766",
+        "apiKey": "sk-bot-LznlAg-L4-_sbe93vVbzoRtsNhLa0pFku4cdpeshpcli9eOXJ6tdXJ3UrXXJNXBWje_oI_r3ha29_wwTE1-NCBzfLyaDAeWhSanIyPGc113y",
+        "api": "anthropic-messages",
+        "models": [
+          {
+            "id": "auto",
+            "name": "Auto Model"
+          }
+        ]
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "minimax/auto"
+      },
+      "models": {},
+      "workspace": "/workspace",
+      "compaction": {
+        "mode": "safeguard"
+      },
+      "maxConcurrent": 4,
+      "subagents": {
+        "maxConcurrent": 8
+      }
+    },
+    "list": [
+      {
+        "id": "main",
+        "default": true,
+        "name": "中书省",
+        "subagents": {
+          "allowAgents": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "libu",
+        "name": "吏部",
+        "workspace": "/home/minimax/.openclaw/workspace-libu",
+        "agentDir": "/root/.openclaw/agents/libu/agent"
+      },
+      {
+        "id": "hubu",
+        "name": "户部",
+        "workspace": "/home/minimax/.openclaw/workspace-hubu",
+        "agentDir": "/root/.openclaw/agents/hubu/agent"
+      },
+      {
+        "id": "libu_yw",
+        "name": "礼部",
+        "workspace": "/home/minimax/.openclaw/workspace-libu_yw",
+        "agentDir": "/root/.openclaw/agents/libu_yw/agent"
+      },
+      {
+        "id": "bingbu",
+        "name": "兵部",
+        "workspace": "/home/minimax/.openclaw/workspace-bingbu",
+        "agentDir": "/root/.openclaw/agents/bingbu/agent"
+      },
+      {
+        "id": "xingbu",
+        "name": "刑部",
+        "workspace": "/home/minimax/.openclaw/workspace-xingbu",
+        "agentDir": "/root/.openclaw/agents/xingbu/agent"
+      },
+      {
+        "id": "gongbu",
+        "name": "工部",
+        "workspace": "/home/minimax/.openclaw/workspace-gongbu",
+        "agentDir": "/root/.openclaw/agents/gongbu/agent"
+      },
+      {
+        "id": "shumi",
+        "name": "枢密院",
+        "workspace": "/home/minimax/.openclaw/workspace-shumi",
+        "agentDir": "/root/.openclaw/agents/shumi/agent"
+      }
+    ]
+  },
+  "tools": {
+    "deny": [
+      "image",
+      "web_search",
+      "web_fetch"
+    ],
+    "web": {
+      "search": {
+        "enabled": false
+      },
+      "fetch": {
+        "enabled": false
+      }
+    },
+    "media": {
+      "image": {
+        "enabled": false
+      }
+    }
+  },
+  "messages": {
+    "ackReactionScope": "group-mentions"
+  },
+  "commands": {
+    "native": "auto",
+    "nativeSkills": "auto",
+    "restart": true,
+    "ownerDisplay": "raw"
+  },
+  "channels": {
+    "feishu": {
+      "enabled": true,
+      "accounts": {
+        "main": {
+          "appId": "cli_a9204bf38f78dbb6",
+          "appSecret": "L9g4qjW9lu6XjQ1u8MjVAhZarBpB8Rht"
+        },
+        "default": {
+          "dmPolicy": "pairing"
+        }
+      }
+    }
+  },
+  "gateway": {
+    "port": 18789,
+    "mode": "local",
+    "bind": "loopback",
+    "auth": {
+      "mode": "token",
+      "token": "minimax-agent"
+    },
+    "tailscale": {
+      "mode": "off",
+      "resetOnExit": false
+    },
+    "reload": {
+      "mode": "hot",
+      "debounceMs": 300
+    },
+    "nodes": {
+      "denyCommands": [
+        "camera.snap",
+        "camera.clip",
+        "screen.record",
+        "calendar.add",
+        "contacts.add",
+        "reminders.add"
+      ]
+    }
+  },
+  "plugins": {
+    "load": {
+      "paths": [
+        "/app/openclaw/extensions/claw-bridge",
+        "/app/openclaw/extensions/feishu",
+        "/app/openclaw/extensions/dingtalk",
+        "/app/openclaw/extensions/matrix-mcp"
+      ]
+    },
+    "entries": {
+      "claw-bridge": {
+        "config": {
+          "verbose": false
+        }
+      },
+      "feishu": {
+        "enabled": true
+      }
+    }
+  }
+}
