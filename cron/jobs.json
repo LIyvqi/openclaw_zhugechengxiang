@@ -1,4 +1,12 @@
 {
   "version": 1,
-  "jobs": []
+  "jobs": [
+    {
+      "id": "github-backup",
+      "name": "GitHub 备份",
+      "schedule": "0 6 * * *",
+      "command": "/root/.openclaw/scripts/github_backup.sh",
+      "enabled": true
+    }
+  ]
 }
