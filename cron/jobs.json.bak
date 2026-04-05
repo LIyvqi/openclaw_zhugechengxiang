@@ -16,8 +16,7 @@
         "lastStatus": "ok",
         "lastDurationMs": 10932,
         "lastDeliveryStatus": "not-requested",
-        "consecutiveErrors": 0,
-        "runningAtMs": 1775366110449
+        "consecutiveErrors": 0
       },
       "wakeMode": "now",
       "payload": {
