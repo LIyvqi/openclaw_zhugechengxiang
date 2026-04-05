@@ -10,13 +10,15 @@
       },
       "enabled": true,
       "state": {
-        "nextRunAtMs": 1774821600000,
-        "lastRunAtMs": 1774735200071,
-        "lastRunStatus": "ok",
-        "lastStatus": "ok",
-        "lastDurationMs": 10932,
+        "nextRunAtMs": 1775368800000,
+        "lastRunAtMs": 1775366110490,
+        "lastRunStatus": "error",
+        "lastStatus": "error",
+        "lastDurationMs": 600004,
         "lastDeliveryStatus": "not-requested",
-        "consecutiveErrors": 0
+        "consecutiveErrors": 1,
+        "lastError": "Error: cron: job execution timed out",
+        "lastErrorReason": "timeout"
       },
       "wakeMode": "now",
       "payload": {
@@ -24,7 +26,7 @@
         "text": "/root/.openclaw/scripts/github_backup.sh"
       },
       "sessionTarget": "main",
-      "updatedAtMs": 1774735211003
+      "updatedAtMs": 1775366710494
     }
   ]
 }

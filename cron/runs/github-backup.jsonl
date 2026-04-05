@@ -13,3 +13,4 @@
 {"ts":1774622621225,"jobId":"github-backup","action":"finished","status":"ok","summary":"/root/.openclaw/scripts/github_backup.sh","deliveryStatus":"not-requested","runAtMs":1774622574537,"durationMs":46683,"nextRunAtMs":1774648800000}
 {"ts":1774648812409,"jobId":"github-backup","action":"finished","status":"ok","summary":"/root/.openclaw/scripts/github_backup.sh","deliveryStatus":"not-requested","runAtMs":1774648800061,"durationMs":12344,"nextRunAtMs":1774735200000}
 {"ts":1774735211008,"jobId":"github-backup","action":"finished","status":"ok","summary":"/root/.openclaw/scripts/github_backup.sh","deliveryStatus":"not-requested","runAtMs":1774735200071,"durationMs":10932,"nextRunAtMs":1774821600000}
+{"ts":1775366710503,"jobId":"github-backup","action":"finished","status":"error","error":"Error: cron: job execution timed out","deliveryStatus":"not-requested","runAtMs":1775366110490,"durationMs":600004,"nextRunAtMs":1775368800000}
