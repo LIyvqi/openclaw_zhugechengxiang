@@ -1,16 +1,13 @@
 {
   "meta": {
-    "lastTouchedVersion": "2026.3.3",
-    "lastTouchedAt": "2026-03-07T03:15:35.640Z"
+    "lastTouchedVersion": "2026.3.11",
+    "lastTouchedAt": "2026-04-05T05:13:38.433Z"
   },
   "wizard": {
-    "lastRunAt": "2026-02-16T06:21:27.876Z",
-    "lastRunVersion": "2026.2.13",
+    "lastRunAt": "2026-03-07T00:00:00.000Z",
+    "lastRunVersion": "2026.3.2",
     "lastRunCommand": "doctor",
     "lastRunMode": "local"
-  },
-  "logging": {
-    "file": "/tmp/claw_logs/openclaw-2026-03-06.log"
   },
   "auth": {
     "profiles": {
@@ -24,7 +21,7 @@
     "mode": "merge",
     "providers": {
       "minimax": {
-        "baseUrl": "http://127.0.0.1:8766",
+        "baseUrl": "http://weaver-llm-gateway-claw.weaver.svc.cluster.local:8080/llm/claw/anthropic",
         "apiKey": "sk-bot-LznlAg-L4-_sbe93vVbzoRtsNhLa0pFku4cdpeshpcli9eOXJ6tdXJ3UrXXJNXBWje_oI_r3ha29_wwTE1-NCBzfLyaDAeWhSanIyPGc113y",
         "api": "anthropic-messages",
         "models": [
@@ -41,11 +38,18 @@
       "model": {
         "primary": "minimax/auto"
       },
-      "models": {},
+      "models": {
+        "minimax/auto": {
+          "params": {
+            "cacheRetention": "short"
+          }
+        }
+      },
       "workspace": "/workspace",
       "compaction": {
         "mode": "safeguard"
       },
+      "timeoutSeconds": 3600,
       "maxConcurrent": 4,
       "subagents": {
         "maxConcurrent": 8
@@ -64,24 +68,16 @@
     ]
   },
   "tools": {
+    "alsoAllow": [
+      "minimax",
+      "memory-core",
+      "llm-task"
+    ],
     "deny": [
       "image",
       "web_search",
       "web_fetch"
-    ],
-    "web": {
-      "search": {
-        "enabled": false
-      },
-      "fetch": {
-        "enabled": false
-      }
-    },
-    "media": {
-      "image": {
-        "enabled": false
-      }
-    }
+    ]
   },
   "messages": {
     "ackReactionScope": "group-mentions"
@@ -92,16 +88,16 @@
     "restart": true,
     "ownerDisplay": "raw"
   },
-  "channels": {
-    "feishu": {
-      "appId": "cli_a9204bf38f78dbb6",
-      "appSecret": "L9g4qjW9lu6XjQ1u8MjVAhZarBpB8Rht"
-    }
-  },
   "gateway": {
     "port": 18789,
     "mode": "local",
-    "bind": "loopback",
+    "bind": "lan",
+    "controlUi": {
+      "allowedOrigins": [
+        "http://localhost:18789",
+        "http://127.0.0.1:18789"
+      ]
+    },
     "auth": {
       "mode": "token",
       "token": "minimax-agent"
@@ -112,7 +108,7 @@
     },
     "reload": {
       "mode": "hot",
-      "debounceMs": 300
+      "debounceMs": 5000
     },
     "nodes": {
       "denyCommands": [
@@ -126,23 +122,79 @@
     }
   },
   "plugins": {
+    "allow": [
+      "minimax",
+      "matrix-claw-enhancement",
+      "memory-core",
+      "feishu",
+      "telegram",
+      "slack",
+      "discord",
+      "dingtalk",
+      "wecom-openclaw-plugin",
+      "weibo-openclaw-plugin",
+      "openclaw-weixin",
+      "open-prose",
+      "llm-task",
+      "thread-ownership",
+      "device-pair",
+      "talk-voice"
+    ],
+    "deny": [
+      "whatsapp"
+    ],
     "load": {
       "paths": [
-        "/app/openclaw/extensions/claw-bridge",
-        "/app/openclaw/extensions/feishu",
-        "/app/openclaw/extensions/dingtalk",
-        "/app/openclaw/extensions/matrix-mcp"
+        "/root/.openclaw/extensions/minimax"
       ]
     },
     "entries": {
-      "claw-bridge": {
-        "config": {
-          "verbose": false
-        }
+      "minimax": {
+        "enabled": true
+      },
+      "memory-core": {
+        "enabled": true
+      },
+      "open-prose": {
+        "enabled": true
+      },
+      "llm-task": {
+        "enabled": true
+      },
+      "thread-ownership": {
+        "enabled": true
       },
       "feishu": {
         "enabled": true
+      },
+      "dingtalk": {
+        "enabled": true
+      },
+      "wecom-openclaw-plugin": {
+        "enabled": true
+      },
+      "weibo-openclaw-plugin": {
+        "enabled": true
+      },
+      "openclaw-weixin": {
+        "enabled": true
+      },
+      "telegram": {
+        "enabled": false
+      },
+      "slack": {
+        "enabled": false
+      },
+      "discord": {
+        "enabled": false
       }
+    }
+  },
+  "channels": {
+    "feishu": {
+      "appId": "cli_a9204bf38f78dbb6",
+      "appSecret": "L9g4qjW9lu6XjQ1u8MjVAhZarBpB8Rht",
+      "groupPolicy": "open"
     }
   }
 }

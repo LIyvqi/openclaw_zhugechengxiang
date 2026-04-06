@@ -10,15 +10,14 @@
       },
       "enabled": true,
       "state": {
-        "nextRunAtMs": 1775368800000,
-        "lastRunAtMs": 1775366110490,
-        "lastRunStatus": "error",
-        "lastStatus": "error",
-        "lastDurationMs": 600004,
+        "nextRunAtMs": 1775455200000,
+        "lastRunAtMs": 1775368800005,
+        "lastRunStatus": "ok",
+        "lastStatus": "ok",
+        "lastDurationMs": 21906,
         "lastDeliveryStatus": "not-requested",
-        "consecutiveErrors": 1,
-        "lastErrorReason": "timeout",
-        "runningAtMs": 1775368800004
+        "consecutiveErrors": 0,
+        "runningAtMs": 1775455200002
       },
       "wakeMode": "now",
       "payload": {
@@ -26,7 +25,7 @@
         "text": "/root/.openclaw/scripts/github_backup.sh"
       },
       "sessionTarget": "main",
-      "updatedAtMs": 1775366710494
+      "updatedAtMs": 1775368821911
     }
   ]
 }
